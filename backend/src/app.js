@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express"
 import authRoutes from "./routes/auth.routes.js"
 import userRoutes from "./routes/user.routes.js"
@@ -6,8 +7,13 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:5173",
+].filter(Boolean);
+
 app.use(cors({
-  origin: "http://localhost:5173", // or wherever your frontend runs
+  origin: allowedOrigins,
   credentials: true
 }));
 app.use(cookieParser());   
