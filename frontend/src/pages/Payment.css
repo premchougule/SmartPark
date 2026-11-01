@@ -1,0 +1,22 @@
+.payment-orb {
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s;
+  filter: drop-shadow(0 0 0.75rem var(--glow-color));
+}
+.payment-orb:hover {
+  transform: scale(1.1) translateY(-10px);
+  filter: drop-shadow(0 0 1.5rem var(--glow-color));
+}
+.waterfall-row {
+  animation: cascade-in 0.5s ease-out forwards;
+  opacity: 0;
+}
+@keyframes cascade-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

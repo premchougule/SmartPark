@@ -1,0 +1,197 @@
+:root {
+  --primary-color: #7f13ec;
+  --secondary-color: #ec4899;
+}
+
+.cosmic-auth-bg {
+  background:
+    radial-gradient(circle at 15% 50%, rgba(127, 19, 236, 0.15), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(244, 63, 94, 0.15), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.1), transparent 40%),
+    linear-gradient(135deg, #09090b 0%, #111827 100%);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.auth-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars-drift 100s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes stars-drift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+.glass-panel {
+  background: rgba(17, 24, 39, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
+  border-radius: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: panel-enter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  margin-top: 20px;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transform: skewX(-20deg);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes panel-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.premium-input-group {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.premium-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem 1rem 1rem 3.5rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.premium-input:focus {
+  border-color: var(--primary-color);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px rgba(127, 19, 236, 0.2), inset 0 0 15px rgba(127, 19, 236, 0.1);
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  transition: color 0.3s ease;
+  pointer-events: none;
+  font-size: 1.25rem;
+}
+
+.premium-input:focus~.input-icon,
+.premium-input:not(:placeholder-shown)~.input-icon {
+  color: var(--primary-color);
+  filter: drop-shadow(0 0 5px rgba(127, 19, 236, 0.5));
+}
+
+.premium-input::placeholder {
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.premium-input:focus::placeholder {
+  color: #9ca3af;
+}
+
+.portal-btn-premium {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #7f13ec 0%, #ec4899 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 8px 20px -5px rgba(127, 19, 236, 0.5);
+  margin-top: 1.5rem;
+}
+
+.portal-btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ec4899 0%, #7f13ec 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portal-btn-premium>span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.portal-btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -5px rgba(236, 72, 153, 0.6);
+}
+
+.portal-btn-premium:hover::before {
+  opacity: 1;
+}
+
+.portal-btn-premium:active {
+  transform: translateY(1px);
+}

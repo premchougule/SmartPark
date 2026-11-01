@@ -1,0 +1,65 @@
+/* Background cosmic gradient */
+.cosmic-bg {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
+              radial-gradient(circle at bottom right, rgba(147, 51, 234, 0.15), transparent 40%),
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(17, 24, 39, 0.9));
+}
+
+/* Parking Building (3D container) */
+.parking-building {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+  animation: building-float 10s ease-in-out infinite alternate;
+}
+
+@keyframes building-float {
+  0% { transform: rotateX(20deg) rotateY(-15deg) translateY(0px); }
+  100% { transform: rotateX(22deg) rotateY(-12deg) translateY(-10px); }
+}
+
+/* Each Floor */
+.parking-floor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 41, 55, 0.85);
+  border: 2px solid rgba(75, 85, 99, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform: translateZ(var(--tz));
+  transition: transform 0.5s ease;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+
+/* Animated Car light */
+.car-ghost {
+  position: absolute;
+  width: 18px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(59,130,246,0.7), rgba(59,130,246,0.2));
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(59,130,246,0.7);
+  animation: car-move 6s linear infinite;
+}
+
+@keyframes car-move {
+  0%   { transform: translate(0px, 0px); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(var(--tx1), var(--ty1)); opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate(var(--tx2), var(--ty2)); opacity: 0; }
+}
+
+/* Parking Spot Portal */
+.available-portal {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
+  animation: portal-pulse 2s ease-in-out infinite;
+}
+
+@keyframes portal-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
