@@ -9,6 +9,7 @@ import cors from "cors";
 const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL,
+  "https://smart-park-8wuj.vercel.app",
   "http://localhost:5173",
 ].filter(Boolean);
 
